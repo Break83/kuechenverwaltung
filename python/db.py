@@ -40,7 +40,6 @@ class MySQLDataBase(object):
 
 	def __del__(self):
 		self.__disconnect()
-		super(MySQLDataBase, self).__del__()
 
 
 	def make_request(self, request, save=False, expectResult=True):

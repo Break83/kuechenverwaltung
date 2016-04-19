@@ -2,7 +2,7 @@ import re
 import socket
 from config import Parser
 
-#from usbDriver import USBScaleSingleton
+from usbDriver import USBScaleSingleton
 from db import MySQLDataBase
 
 
@@ -24,14 +24,12 @@ class Server(object):
 
 	def __init__(self):
 		self.config = Parser()
-		#self.scale = USBScaleSingleton()
+		self.scale = USBScaleSingleton()
 		self.db = MySQLDataBase()
 
 
 	def get_weight(self):
-		# delete the following line to get real results..
-		return .8585
-		return self.scale.get_weight()
+		return self.scale.get_weight(self.scale.DATA_MODE_GRAMS)
 
 
 	@property

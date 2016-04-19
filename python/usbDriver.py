@@ -11,12 +11,16 @@ class USBScaleSingleton(object):
 	(Useful to avoid repeatedly creating/destroying
 	instances of the scale)
 	"""
-	def __new__(self,**kwargs):
+	_instance = None
+	def __new__(cls,**kwargs):
+		if cls._instance:
+			return cls._instance
 		try:
-			return self.scale
+			return cls._instance
 		except AttributeError:
-			self.scale = DymoUSBScale(**kwargs)
-			return self.scale
+			cls._instance = DymoUSBScale(**kwargs)
+			return cls._instance
+	
 
 
 class DymoUSBScale(object):

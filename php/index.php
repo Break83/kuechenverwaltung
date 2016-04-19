@@ -24,7 +24,7 @@ print_r("current weight: " . $weight . "<br/>");
 /* get the current weight */
 $s = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 socket_connect($s, "localhost", 32792);
-socket_send($s, "store weight johndoe .756", 27, MSG_EOF);
+socket_send($s, "store weight johndoe", 27, MSG_EOF);
 $entry = "untitled";
 socket_recv($s, $entry, 4096, MSG_PEEK);
 socket_close($s);
